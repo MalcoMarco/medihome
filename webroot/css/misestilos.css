@@ -1,0 +1,85 @@
+/* Quitar subrayado y fondo de <a>*/
+body{
+     height: 100%;
+}
+.active-ok{
+    border-bottom: 1px solid;
+}
+.sin-r{
+    text-decoration: none !important;
+    color: white !important;
+}
+.hide{
+    display: none;
+}
+.avatar{
+    min-width: 60px;
+    max-width: 60px;
+    min-height: 60px;
+    max-height: 60px;
+}
+.jumb0{
+    padding: 1rem;
+}
+/* div azul tranparente*/
+.sobre{
+    position: absolute;
+    bottom: 0;
+    background: #17a2b8;
+    font-family: Conv_Gotham-Book;
+    opacity: 0.7;
+    width: 100%;
+    color: white;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+    padding: 8px;
+}
+
+.parallax { 
+    /* Full height */
+    height: 300px; 
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+@media only screen and (max-device-width: 1024px) {
+    .parallax {
+        background-attachment: scroll;
+    }
+}
+/* estilos pra las noticias*/
+.post {
+    padding-bottom:20px;
+    margin-bottom:20px;
+    border-bottom:1px solid #999;
+}
+
+.post .post-title a {
+    color:#333;
+}
+
+.post .thumb {
+    margin-right:10px;
+    width:40%;
+}
+
+.post .thumb img {
+    width:100%;
+}
+
+.post .contenedor-botones {
+    width: 100%;
+}
+
+/* -- Media Querie -- */
+@media screen and (max-width: 768px) {
+    .post .thumb {
+        width: 100%;
+        margin-bottom: 20px;
+        margin-right: 0;
+    }
+}
