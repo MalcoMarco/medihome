@@ -12,6 +12,10 @@ body{
 .hide{
     display: none;
 }
+
+.c-w{
+    color: #fff;
+}
 .avatar{
     min-width: 60px;
     max-width: 60px;
@@ -20,6 +24,7 @@ body{
 }
 .jumb0{
     padding: 1rem;
+    margin-bottom: 2px;
 }
 /* div azul tranparente*/
 .sobre{

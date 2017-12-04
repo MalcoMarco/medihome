@@ -1,5 +1,6 @@
 <?php $this->layout='App';?>
 
+<main>
 <div class="jumbotron jumb0">
 	<h1 class="display-6">MediHome!</h1>
 	<p class="lead">{{ListE[IDsearchE].nombre}}</p>
@@ -25,6 +26,7 @@
 					    </div>	
 				  	</div>
 				  
+				  	</div>				  
 				</div>
 			</div>		
 		</div>
@@ -47,8 +49,8 @@
 			<p> <b>Phone: </b>{{medic.telefono}}</p>
 			<p><b>Email: </b>{{medic.email}}</p>
 		</div>
-		<div class="col">
-			<a v-bind:href="'/pages/reserva_dia?'+index" role="button" class="btn btn-outline-primary mt-3">Reservar cita</a>		
+		<div class="col">		
+			<a v-bind:href="'/pages/reserva_dia?Mid='+medic.id" role="button" class="btn btn-outline-primary mt-3">Reservar cita</a>		
 		</div>
 		<hr>
 	</div>
@@ -78,3 +80,4 @@
 	</div>
 </div>
 
+</main>

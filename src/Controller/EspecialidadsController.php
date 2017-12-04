@@ -30,42 +30,39 @@ class EspecialidadsController extends AppController
      */
     public function index()
     {
-        
 
         $especialidads = $this->paginate();
         $this->set(compact('especialidads'));
         $this->set('_serialize', ['especialidads']);
-
-
     }
-public function listar(){
-     $this->autoRender = false; // No renderiza mediate el fichero .ctp
     
-    $this->paginate = array( 
-            'fields' => ['Especialidads.id', 'Especialidads.nombre'],
-            
-            'order' =>['Especialidads.id'=>'asc']
-    );
-//'limit' => 2,
-
-    $especialidads = $this->paginate();
-    
-    //$pp=$this->Paginator;
-    $xpage=$this->Paginator->request->params['paging']['Especialidads'];
-   //$pp=json_encode($this->Paginator->request->params['paging']['Especialidads']['page']);
-    $mipag=[
-            'total'=>$xpage['count'],
-            'current_page'=>$xpage['page'],  
-            'per_page'=>$xpage['perPage'],         
-            'last_page'=>$xpage['pageCount'],
-            'from'=>$xpage['page'],
-            'to'=>$xpage['current']
-
-    ];
-    echo json_encode(compact('especialidads','mipag'));       
-    //print_r($this->Paginator);
+    public function listar(){
+         $this->autoRender = false; // No renderiza mediate el fichero .ctp
         
-}
+        $this->paginate = array( 
+                'fields' => ['Especialidads.id', 'Especialidads.nombre'],            
+                'order' =>['Especialidads.id'=>'asc']
+        );
+        //'limit' => 2,
+
+        $especialidads = $this->paginate();
+        
+        //$pp=$this->Paginator;
+        $xpage=$this->Paginator->request->params['paging']['Especialidads'];
+        //$pp=json_encode($this->Paginator->request->params['paging']['Especialidads']['page']);
+        $mipag=[
+                'total'=>$xpage['count'],
+                'current_page'=>$xpage['page'],  
+                'per_page'=>$xpage['perPage'],         
+                'last_page'=>$xpage['pageCount'],
+                'from'=>$xpage['page'],
+                'to'=>$xpage['current']
+            ];
+        echo json_encode(compact('especialidads','mipag'));       
+        //print_r($this->Paginator);
+            
+    }
+
     /**
      * View method
      *

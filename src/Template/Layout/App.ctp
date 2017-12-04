@@ -11,27 +11,27 @@
         <link rel="stylesheet" type="text/css" href="/css/misestilos.css">
         <link rel="shortcut icon" type="image/x-icon" href="/imagenes/favicon.ico" />
 
-        
-        
+        <script type="text/javascript" src="/js/jquery-3.1.1.min.js"></script>
+        <script type="text/javascript" src="/js/vue2.js"></script>
+        <script type="text/javascript" src="/js/axios.js"></script>
+
     </head>
     <body>
         <nav id="mynavbar" class="navbar navbar-expand-lg navbar-dark bg-info">
             <?= $this->element('inicio/navbar');//de carpeta Element ?>
         </nav>
 
-        <main>        
+
         <?= $this->fetch('content');//de carpeta Page segun la url ?>        
-       </main>
-           
+                 
         <?= $this->element('inicio/footer');?>
 
-        <script type="text/javascript" src="/js/jquery-3.1.1.min.js"></script>
+        
+
         <script type="text/javascript" src="/js/theter.js"></script>
         <script type="text/javascript" src="/js/poper.min.js"></script>
         <script type="text/javascript" src="/js/bootstrap.js"></script>
         
-        <script type="text/javascript" src="/js/vue2.js"></script>
-        <script type="text/javascript" src="/js/axios.js"></script>
         <script type="text/javascript" src="/js/nabvarvue.js"></script>
         <script type="text/javascript" src="/js/iniciovue.js"></script> 
         

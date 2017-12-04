@@ -52,7 +52,11 @@
                 <td><?= h($medico->telefono) ?></td>
                 <td><?= h($medico->direccion) ?></td>
                 <td><?= h($medico->email) ?></td>
+<<<<<<< HEAD
                 <td><?= $medico->has('especialidad') ? $this->Html->link($medico->especialidad->id, ['controller' => 'Especialidads', 'action' => 'view', $medico->especialidad->id]) : '' ?></td>
+=======
+                <td><?= $medico->has('especialidad') ? $this->Html->link($medico->especialidad->nombre, ['controller' => 'Especialidads', 'action' => 'view', $medico->especialidad->id]) : '' ?></td>
+>>>>>>> bake
                 <td><?= h($medico->created) ?></td>
                 <td><?= h($medico->modified) ?></td>
                 <td class="actions">

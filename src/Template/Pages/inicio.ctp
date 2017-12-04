@@ -1,13 +1,12 @@
 <?php
 $this->layout='App';
 ?>
+
+<main>
 <div class="container">
 	<?= $this->element('inicio/carrousel')?>
 
 	<div class="row justify-content-between">
-		
-
-		
 		<div class="col-12 card text-white bg-info mt-3 mb-3">
 				<div class="card-header">
 					<h5>NUESTRAS ESPECIALIDADES 
@@ -101,7 +100,8 @@ $this->layout='App';
 			<img src="/imagenes/doctores.jpg" class="img-fluid" height="20px">
 		</div>
 		<div class="col-sm-12 col-md-4 align-self-center">
-			<a href="/medicos">
+
+			<a href="#" class="">
 				<h3>Nuestros Especialistas</h3>
 				<p>Conoce a Nuestros Expertos De La Salud...</p>
 			</a>
@@ -110,7 +110,7 @@ $this->layout='App';
 	<hr>
 	<?= $this->element('inicio/boletin')?>
 </div>
-	
+</main>
 	
  
 

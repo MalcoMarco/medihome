@@ -12,9 +12,8 @@ use App\Controller\AppController;
  */
 class MedicosController extends AppController
 {
-    public $paginate = array( 
-            'order' =>['Especialidads.id'=>'asc']
-    );
+
+
     /**
      * Index method
      *
@@ -23,7 +22,9 @@ class MedicosController extends AppController
     public function index()
     {
         $this->paginate = [
-            'contain' => ['Especialidads']
+
+            'contain' => ['Especialidads'],
+            'order' =>['Medicos.id'=>'asc']
         ];
         $medicos = $this->paginate($this->Medicos);
 
@@ -32,25 +33,40 @@ class MedicosController extends AppController
     }
 
     public function buscar($id = null)
-    {//buscar medico de expecialidad x
+    {   //buscar medico de expecialidad x
         $this->paginate = array( 
-            'fields' => ['id', 'nombre','apaterno','amaterno', 'telefono','email','especialidad_id'],
-            'order' =>['Medicos.id'=>'asc']
-        );        
+            'contain' => ['Especialidads'],
+            'fields' => [   'id', 'nombre','apaterno',
+                            'amaterno', 'telefono','email',
+                            'especialidad_id','Especialidads.nombre'
+                        ],
+            'order' =>['Medicos.id'=>'asc']            
+        );
+
         $this->autoRender = false;
         $opciones=array('conditions' => array('Medicos.especialidad_id' => $id));
         $Medics = $this->paginate('medicos',$opciones);
         echo json_encode(compact('Medics'));
-
     }
 
-    /**
-     * View method
-     *
-     * @param string|null $id Medico id.
-     * @return \Cake\Http\Response|void
-     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
-     */
+    public function medicoid($id)
+    {   //buscar medico de expecialidad x
+        $this->paginate = array( 
+            'contain' => ['Especialidads'],
+            'fields' => [   'id', 'nombre','apaterno',
+                            'amaterno', 'telefono','email',
+                            'Especialidads.nombre'
+                        ],
+            'order' =>['Medicos.id'=>'asc']            
+        );
+
+        $this->autoRender = false;
+        $opciones=array('conditions' => array('Medicos.id' => $id));
+        $Medic = $this->paginate('medicos',$opciones);
+        echo json_encode(compact('Medic'));
+    }
+
+
     public function view($id = null)
     {
         $medico = $this->Medicos->get($id, [
