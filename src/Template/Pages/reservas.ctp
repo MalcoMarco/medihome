@@ -1,5 +1,6 @@
 <?php $this->layout='App';?>
 
+
 <main>
 <div class="jumbotron jumb0">
 	<h1 class="display-6">MediHome!</h1>
@@ -39,11 +40,11 @@
 	<hr>
 	<div class="row mt-3" v-for="(medic, index) in medics">		
 		<div class="col-5 col-md-2">
-			<img src="/imagenes/medicos/medico.jpg" alt="..." class="img-thumbnail">				
+			<img src="/imagenes/medicos/medico.jpg" alt="..." class="rounded" style="max-height: 100px">				
 		</div>
 		<div class="col">
 			<p> <b>Medico: </b> {{medic.nombre +' ' +medic.apaterno }}</p>
-			<p> <b>Especialidad_id: </b> {{medic.especialidad_id}} </p>
+			<p> <b>Especialidad: </b> {{medic.especialidad.nombre}} </p>
 		</div>
 		<div class="col">
 			<p> <b>Phone: </b>{{medic.telefono}}</p>

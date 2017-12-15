@@ -1,7 +1,7 @@
 <?php
 use Migrations\AbstractMigration;
 
-class Borrames extends AbstractMigration
+class Users extends AbstractMigration
 {
     /**
      * Change Method.
@@ -12,17 +12,22 @@ class Borrames extends AbstractMigration
      */
     public function change()
     {
-       /*
-        $borrames = $this->table('borrames');
+        $users = $this->table('users');
 
-        $borrames->addColumn('nombre', 'string', ['limit' => 50])
-        ->addColumn('email', 'string', ['limit' => 30])
-        ->addColumn('edad', 'integer', ['null' => true, 'default' => null])
-
+        $users
+        ->addColumn('username', 'string', ['limit' => 40])
+        ->addColumn('password', 'string', ['limit' => 80])
+        ->addColumn('tipodoc', 'string', ['limit' => 20,'default' => 'DNI'])        
+        ->addColumn('role', 'string', ['limit' => 40])
+        
         ->addColumn('created', 'timestamp',['null' => true])
         ->addColumn('modified', 'timestamp', ['null' => true, 'default' => null])
-        ->addIndex(['email'], ['unique' => true])
         ->save();
-*/
     }
 }
+
+/*
+
+
+lorem   
+*/

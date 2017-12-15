@@ -16,25 +16,25 @@
 </nav>
 <div class="medicos index large-9 medium-8 columns content">
     <h3><?= __('Medicos') ?></h3>
-    <table cellpadding="0" cellspacing="0">
+    <table cellpadding="0" cellspacing="0" class="table-responsive">
         <thead>
             <tr>
                 <th scope="col"><?= $this->Paginator->sort('id') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('codigo') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('nombre') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('apaterno') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('amaterno') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('nacimiento') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('sexo') ?></th>
+                <th scope="col" style="padding-right: 40px"><?= $this->Paginator->sort('codigo') ?></th>
+                <th scope="col" style="padding-right: 40px"><?= $this->Paginator->sort('nombre') ?></th>
+                <th scope="col" style="padding-right: 40px"><?= $this->Paginator->sort('apaterno') ?></th>
+                <th scope="col" style="padding-right: 40px"><?= $this->Paginator->sort('amaterno') ?></th>
+                <th scope="col" style="padding-right: 40px"><?= $this->Paginator->sort('nacimiento') ?></th>
+                <th scope="col" style="padding-right: 40px"><?= $this->Paginator->sort('sexo') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('estado') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('dni') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('telefono') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('direccion') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('email') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('especialidad_id') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('created') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('modified') ?></th>
-                <th scope="col" class="actions"><?= __('Actions') ?></th>
+                <th scope="col" style="padding-right: 80px"><?= $this->Paginator->sort('dni') ?></th>
+                <th scope="col" style="padding-right: 40px"><?= $this->Paginator->sort('telefono') ?></th>
+                <th scope="col" style="padding-right: 40px"><?= $this->Paginator->sort('direccion') ?></th>
+                <th scope="col" style="padding-right: 80px"><?= $this->Paginator->sort('email') ?></th>
+                <th scope="col" style="padding-right: 40px"><?= $this->Paginator->sort('especialidad_id') ?></th>
+                <th scope="col" style="padding-right: 60px"><?= $this->Paginator->sort('created') ?></th>
+                <th scope="col" style="padding-right: 80px"><?= $this->Paginator->sort('modified') ?></th>
+                <th scope="col" class="actions" style="padding-right: 90px"><?= __('Actions') ?></th>
             </tr>
         </thead>
         <tbody>
@@ -52,11 +52,8 @@
                 <td><?= h($medico->telefono) ?></td>
                 <td><?= h($medico->direccion) ?></td>
                 <td><?= h($medico->email) ?></td>
-<<<<<<< HEAD
-                <td><?= $medico->has('especialidad') ? $this->Html->link($medico->especialidad->id, ['controller' => 'Especialidads', 'action' => 'view', $medico->especialidad->id]) : '' ?></td>
-=======
+
                 <td><?= $medico->has('especialidad') ? $this->Html->link($medico->especialidad->nombre, ['controller' => 'Especialidads', 'action' => 'view', $medico->especialidad->id]) : '' ?></td>
->>>>>>> bake
                 <td><?= h($medico->created) ?></td>
                 <td><?= h($medico->modified) ?></td>
                 <td class="actions">

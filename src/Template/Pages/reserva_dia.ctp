@@ -20,73 +20,85 @@
 		</div>
 	</div>
 
-	<div class="container">
-		<!--
-			SI: ya ha iniciado sesion mostrsr
-		-->
-		
-		<div class="row mt-3 hide" >
-			<h4>Paciente:</h4>
-			<div class="col-3">
-				<p> <b>Paciente: </b> {Paciente.name}
+	<div class="container"> 
+
+		<?php if (isset($current_user)): ?>
+			<div class="row mt-3" >
+				<div class="col-3">
+					<p> <b>Paciente: </b> <?=$current_user["tipodoc"]." : ". $current_user["username"] ?>
+				</div>
+				<div class="col-6">
+					<p> <b>Phone: </b> {{Paciente=<?=$current_user["username"] ?>}} <b>Email: </b> {Paciente.email}</p>
+				</div>
 			</div>
-			<div class="col-6">
-				<p> <b>Phone: </b> {Paciente.telefono} <b>Email: </b> {Paciente.email}</p>
+
+		<?php else: ?>
+			<div class="row" id="Formulario">
+				<h4>Inicie Sesion</h4>
+					<form class="container"  method="post"  action="/users/login">
+						<input name="_method" value="POST" type="hidden">
+						<input name="role" value="Paciente" type="hidden">
+						<input name="Mid" v-model="Mid" type="hidden">
+						<div class="row">
+					  		<div class="col-md-2">
+							  	<div class="form-group">
+							    	<label for="Select1">Documento</label>
+							    	<select class="form-control" id="Select1" name="tipodoc" v-model="loginData.tipodoc">
+								      <option value="DNI">DNI</option>
+								      <option value="Libreta">Libreta</option>
+								      <option value="Pasaporte">Pasaporte</option>
+							    	</select>
+						  		</div>
+					    	</div>
+						    <div class="col-md-3 mb-3">
+						      	<label for="validationCustom04">Num. de {{loginData.tipodoc}} </label>
+						      	<input type="text" class="form-control" id="validationCustom04" required name="username" v-model="loginData.username">
+						    </div>
+						    <div class="col-md-3 mb-3">
+					      		<label for="password">Password</label>
+					      		<input type="password" class="form-control" id="password" required name="password" v-model="loginData.password">
+					    	</div>
+					    	<div class="col-md-3 d-flex align-items-center mt-1">
+					      		<button class="btn btn-primary"  id="Validar" >Iniciar Sesion</button>
+					    	</div>
+					  	</div>
+					  	<?php if (isset($_GET['errorlogin'])): ?>
+						<div class="alert alert-danger alert-dismissible fade show" role="alert">
+						  	<strong>error!</strong> username or password does not exist, please try again.
+						  	<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+							    <span aria-hidden="true">&times;</span>
+						  	</button>
+						</div>
+					<?php endif ?>
+					  	<div class="form-group ml-4 ">
+					    	<a href="/pages/login">Registrarme Ahora!</a>
+						</div>				  
+					</form>
+					
 			</div>
-		</div>
-		<!--
-			SI-NO: 
-		-->
-		<div class="row" id="Formulario">
-			<h4>Inicie Sesion</h4>
-				<form class="container">
-					<div class="row">
-				  		<div class="col-md-2">
-						  	<div class="form-group">
-						    	<label for="Select1">Documento</label>
-						    	<select class="form-control" id="Select1">
-							      <option>DNI</option>
-							      <option>Libreta</option>
-							      <option>Pasaporte</option>
-						    	</select>
-					  		</div>
-				    	</div>
-					    <div class="col-md-3 mb-3">
-					      	<label for="validationCustom04">Num. de </label>
-					      	<input type="text" class="form-control" id="validationCustom04" required>
-					    </div>
-					    <div class="col-md-3 mb-3">
-				      		<label for="password">Password</label>
-				      		<input type="password" class="form-control" id="password" required>
-				    	</div>
-				    	<div class="col-md-3 d-flex align-items-center mt-1">
-				      		<button class="btn btn-primary"  id="Validar">Iniciar Sesion</button>
-				    	</div>
-				  	</div>
-				  	<div class="form-group ml-4 ">
-				    	<a href="/pages/login">Registrarme Ahora!</a>
-					</div>				  
-				</form>
-		</div>
-		<!--
-			FIN-SI
-		-->
+
+		<?php endif ?>
+
 		<div class="card border-light bg-light mb-3" >
 		  	<div class="card-header center">
 		  		<label for="dia"><i class="fa fa-calendar" aria-hidden="true"></i>
 		  			Ubica el día que quieres reservar tu cita: </label>
 		  			<div class="row d-flex  justify-content-center" >
-				  		<div class="col-12 col-md-3 mb-2" >		  			
-				  			<input type="date"  class="form-control">
-				  		</div>
+		  				
+		  				<div class="col-12 col-md-3 mb-2" >		  			
+				  			<input type="text"  class="form-control datepicker" id="fecha1"  v-model='fecha'>
+				  		</div>				  		
 				  		<div class="col-md-3 d-flex align-items-center">
-							<button class="btn btn-primary"  id="horario">Ver Horario</button>
+							<button class="btn btn-primary"  id="horario" @click='VerHorario()' >Ver Horario</button>
 						</div>		  				
 		  			</div>
 		  	</div>
 		  	<div class="card-body">
 		  		<div class="row"><label><i class="fa fa-calendar" aria-hidden="true"></i> Elija el turno y la hora</label></div>
-			  	<div class="row">			  		
+		  			<div id="progressbar1" class="progress mb-4">
+					  	<div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
+					</div>
+			  	<div class="row hide" id="cargahoraria">			  		
 			  		<div class="col-12 col-md-4">
 			  			  <div class="card  ">
 							    <div class="card-header text-white bg-info" role="tab" id="headingOne">
@@ -97,20 +109,20 @@
 							      </h5>
 							    </div>
 
-							    <div id="collapseOne" class="collapse" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
+							    <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne">
 							      	<div class="card-body">
 							  			<table class="table table-striped">
 										 	<thead class="bg-info c-w">
 											    <tr>
 											      <th>Horario</th>
-											      <th>{LUNES} {dia}</th>
+											      <th>{{fecha}}</th>
 											    </tr>
 											</thead>
 										  	<tbody>
-										  		<tr v-for="(horario, index) in mañanas" >
+										  		<tr v-for="(horario, index) in mananas" >
 										  			<th>{{horario.hora}} </th>
 										  			<td>
-										  				<a class="btn btn-info btn-sm" href="/pages/reserva_resumen" role="button" v-if="horario.estado=='Disponible'">{{horario.estado}} </a>
+										  				<a class="btn btn-info btn-sm" v-bind:href="'/pages/reserva_resumen?horario='+horario.hora+'&Mid='+Mid" role="button" v-if="horario.estado=='Disponible'">{{horario.estado}} </a>
 										  				<button v-else type="button" class="btn btn-secondary btn-sm" disabled>Ocupado</button>
 										  			</td>
 										  		</tr>
@@ -136,7 +148,7 @@
 									 	<thead class="bg-info c-w">
 										    <tr>
 										      <th scope="col">Horario</th>
-										      <th scope="col">{LUNES} {dia}</th>
+										      <th scope="col">{{fecha}}</th>
 										    </tr>
 										</thead>
 											<tr v-for="(horario, index) in tardes" >
@@ -168,7 +180,7 @@
 									 	<thead class="bg-info c-w">
 										    <tr>
 										      <th scope="col">Horario</th>
-										      <th scope="col">{LUNES} {dia}</th>
+										      <th scope="col">{{fecha}}</th>
 										    </tr>
 										</thead>
 									  	<tbody>
@@ -188,14 +200,8 @@
 		  	</div>
 		</div>
 	</div>	
+
 </div>
 <script type="text/javascript" src="/js/bootstrap-datepicker.min.js"></script>
-<script type="text/javascript">
-	    $('#sandbox-container input').datepicker({
-        format: "dd/mm/yy",
-        startDate: "today",
-        todayBtn: true
-    });
-</script>
 <script type="text/javascript" src="/js/horariosvue.js"></script>
 

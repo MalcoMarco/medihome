@@ -31,6 +31,7 @@ class CitasController extends AppController
 
     public function verhorario()
     {   //Lista los horarios ocupados del medico x
+        //http://localhost:8765/citas/verhorario?fecha=1-12-17&Mid=1
         $Mid=$_GET['Mid'];
         $fecha=$_GET['fecha'];
 

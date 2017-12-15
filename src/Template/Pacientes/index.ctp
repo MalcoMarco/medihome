@@ -16,24 +16,24 @@
 </nav>
 <div class="pacientes index large-9 medium-8 columns content">
     <h3><?= __('Pacientes') ?></h3>
-    <table cellpadding="0" cellspacing="0">
+    <table cellpadding="0" cellspacing="0" class="table-responsive">
         <thead>
             <tr>
                 <th scope="col"><?= $this->Paginator->sort('id') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('nombre') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('apaterno') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('amaterno') ?></th>
+                <th scope="col" style="padding-right: 40px"><?= $this->Paginator->sort('nombre') ?></th>
+                <th scope="col" style="padding-right: 40px"><?= $this->Paginator->sort('apaterno') ?></th>
+                <th scope="col" style="padding-right: 40px"><?= $this->Paginator->sort('amaterno') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('nacimiento') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('sexo') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('tipodoc') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('numdoc') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('telefono') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('direccion') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('email') ?></th>
+                <th scope="col" style="padding-right: 30px"><?= $this->Paginator->sort('numdoc') ?></th>
+                <th scope="col" style="padding-right: 30px"><?= $this->Paginator->sort('telefono') ?></th>
+                <th scope="col" style="padding-right: 30px"><?= $this->Paginator->sort('direccion') ?></th>
+                <th scope="col" style="padding-right: 99px"><?= $this->Paginator->sort('email') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('aseguradora_id') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('created') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('modified') ?></th>
-                <th scope="col" class="actions"><?= __('Actions') ?></th>
+                <th scope="col" style="padding-right: 40px"><?= $this->Paginator->sort('created') ?></th>
+                <th scope="col" style="padding-right: 40px"><?= $this->Paginator->sort('modified') ?></th>
+                <th scope="col" class="actions" style="padding-right: 80px"><?= __('Actions') ?></th>
             </tr>
         </thead>
         <tbody>

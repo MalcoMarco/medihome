@@ -3,16 +3,22 @@ new Vue({
 
 	created:function(){
 		this.Mid = this.getParameterByName('Mid');
-		//this.Mpath = window.location.pathname;
-		//this.Msearch = (window.location.search).substring(1);
 		
 		this.BuscarMid(this.Mid);
+		this.VerHorario();
 	},	
 
-//obtener la fecha y asociarlo al modelo
 	data:{
-		fecha:'',
-		Mid:'',
+		fecha:new Date().toJSON().slice(0,10),
+		Paciente:'',
+		loginData:{
+			tipodoc:'DNI',
+			username:'12345678',
+			password:'12345678',
+			meth:'',
+			Mid:'POST'
+		},
+		
 		medic:[{
         		amaterno: '',
 				apaterno: '',
@@ -22,7 +28,8 @@ new Vue({
 				nombre: '',
 				telefono: ''
 		}],
-		mañanas:[{id:0,hora:'8:00', estado:'Disponib'},
+		horario:[{id:0,hora:'', estado:''}],
+		mananas:[{id:0,hora:'8:00', estado:'Disponib'},
 				{id:1,hora:'8:20', estado:'Disponible'},
 				{id:2,hora:'8:40', estado:'Disponible'},
 				{id:3,hora:'9:00', estado:'Disponible'},
@@ -68,12 +75,6 @@ new Vue({
 	},
 
 	methods:{
-		getParameterByName : function(name){
-		    name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
-		    var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
-		    var results = regex.exec(location.search);
-		    return results === null ? ' ' : decodeURIComponent(results[1].replace(/\+/g, ' '));
-		},
 
 		BuscarMid : function(Mid){			
 			//alert('buscando e: '+ (this.selectE++));
@@ -84,13 +85,109 @@ new Vue({
 			});
 		},
 
-		VerHorario : function(fecha){			
-			//alert('buscando e: '+ (this.selectE++));
-			axios.get('/citas/verhorario/?Mid='+ this.Mid +'&fecha='+fecha)
-			.then(respuesta=>{
-				//console.log(respuesta.data);
-				this.medic= respuesta.data.Medic;
-			});
+		dologin : function(event){			
+			/*console.log(event);
+			axios.post('/users/login', this.loginData)
+			    .then(response => {
+			    	console.log(response.data);
+			    })
+			    .catch(e => {
+			      
+			    })
+*/
+			
 		},
+
+		resetHorario: function(){
+			for (var i = this.mananas.length - 1; i >= 0; i--) {
+				this.mananas[i].estado='Disponible';
+			}
+			for (var i = this.tardes.length - 1; i >= 0; i--) {
+				this.tardes[i].estado='Disponible';
+			}
+			for (var i = this.noches.length - 1; i >= 0; i--) {
+				this.noches[i].estado='Disponible';
+			}			
+		},
+		actualizarHorario(){
+			for (var i = this.mananas.length - 1; i >= 0; i--) {				
+				for (var j = this.horario.length - 1; j >= 0; j--) {
+					if (this.mananas[i].hora==this.horario[j].hora) {
+						this.mananas[i].estado='noDisponible';
+						console.log(this.mananas[i].hora);
+					}					
+				}
+			}
+			for (var i = this.tardes.length - 1; i >= 0; i--) {				
+				for (var j = this.horario.length - 1; j >= 0; j--) {
+					if (this.tardes[i].hora==this.horario[j].hora) {
+						this.tardes[i].estado='noDisponible';
+						//console.log(this.tardes[i].hora);
+					}					
+				}
+			}
+			for (var i = this.noches.length - 1; i >= 0; i--) {				
+				for (var j = this.horario.length - 1; j >= 0; j--) {
+					if (this.noches[i].hora==this.horario[j].hora) {
+						this.noches[i].estado='noDisponible';
+						//console.log(this.noches[i].hora);
+					}					
+				}
+			}
+		},
+
+		VerHorario : function(){			
+			//alert('buscando e: '+ (this.selectE++));
+			this.cargando();
+			if (this.fecha!='') {			
+				this.resetHorario();
+				axios.get('/citas/verhorario/?Mid='+this.Mid +'&fecha='+this.fecha)
+				.then(respuesta=>{
+					//console.log('/citas/verhorario/?Mid='+this.Mid +'&fecha='+this.fecha);
+					this.horario= respuesta.data.Cits;
+					this.actualizarHorario();
+					this.cargado();
+				}).catch(function(error){console.log(error);});
+			}else{
+				alert('ingrese una fecha valida!!');
+			}
+		},
+
+		cargando(){
+			var $prog=$('#progressbar1');
+			$prog.removeClass("hide");
+			var $carhorario=$('#cargahoraria');
+			$carhorario.addClass("hide");
+		},
+		cargado(){
+			var $prog=$('#progressbar1');
+			$prog.addClass("hide");
+			var $carhorario=$('#cargahoraria');
+			$carhorario.removeClass("hide");
+		},
+
+		getParameterByName : function(name){
+		    name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+		    var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+		    var results = regex.exec(location.search);
+		    return results === null ? ' ' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+		},
+
+		fechaaa: function(){
+			this.fecha=document.getElementById('fecha1').value
+		}
+	},
+
+	mounted () {
+        $('#fecha1').datepicker({
+        	startDate: "today",
+        	language: "es",
+        	autoclose: true,
+        	todayBtn: true
+        }),
+
+    	$('#fecha1').datepicker().on('changeDate',()=>{
+    		this.fecha=$('#fecha1').val()  
+    	})
 	}
 });

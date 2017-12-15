@@ -16,23 +16,23 @@
 </nav>
 <div class="citas index large-9 medium-8 columns content">
     <h3><?= __('Citas') ?></h3>
-    <table cellpadding="0" cellspacing="0">
+    <table cellpadding="0" cellspacing="0" class=" table table-responsive">
         <thead>
             <tr>
                 <th scope="col"><?= $this->Paginator->sort('id') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('dia') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('hora') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('estado') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('lugar') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('motivo') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('diagnostico') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('tratamiento') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('masdetalles') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('paciente_id') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('medico_id') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('created') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('modified') ?></th>
-                <th scope="col" class="actions"><?= __('Actions') ?></th>
+                <th scope="col" style="padding-right: 40px"><?= $this->Paginator->sort('dia') ?></th>
+                <th scope="col" style="padding-right: 10px" ><?= $this->Paginator->sort('hora') ?></th>
+                <th scope="col" style="padding-right: 40px"><?= $this->Paginator->sort('estado') ?></th>
+                <th scope="col" style="padding-right: 40px"><?= $this->Paginator->sort('lugar') ?></th>
+                <th scope="col" style="padding-right: 90px"><?= $this->Paginator->sort('motivo') ?></th>
+                <th scope="col" style="padding-right: 40px"><?= $this->Paginator->sort('diagnostico') ?></th>
+                <th scope="col" style="padding-right: 40px"><?= $this->Paginator->sort('tratamiento') ?></th>
+                <th scope="col" style="padding-right: 40px"><?= $this->Paginator->sort('masdetalles') ?></th>
+                <th scope="col" style="padding-right: 40px"><?= $this->Paginator->sort('paciente_id') ?></th>
+                <th scope="col" style="padding-right: 40px"><?= $this->Paginator->sort('medico_id') ?></th>
+                <th scope="col" style="padding-right: 80px"><?= $this->Paginator->sort('created') ?></th>
+                <th scope="col" style="padding-right: 80px"><?= $this->Paginator->sort('modified') ?></th>
+                <th scope="col" class="actions" style="padding-right: 80px"><?= __('Actions') ?></th>
             </tr>
         </thead>
         <tbody>

@@ -28,8 +28,14 @@ $cakeDescription = 'CakePHP';
         </ul>
         <div class="top-bar-section">
             <ul class="right">
-                <li><a target="_blank" href="https://book.cakephp.org/3.0/">Documentation</a></li>
-                <li><a target="_blank" href="https://api.cakephp.org/3.0/">API</a></li>
+                <?php if (isset($current_user)): ?>
+                    <li> <a href="/especialidads"> Especialidades</a> </li> 
+                    <li><a href="/medicos"> Medicos</a></li>
+                    <li><a href="/pacientes"> Pacientes</a></li>
+                    <li><a href="/citas">Citas</a></li>
+                    <li><a href="/users"> Usuarios</a></li>
+                    <li><?=$this->Html->link('Cerrar Sesion',['controller'=>'Users','action'=>'logout']) ?> </li>                    
+                <?php endif ?>
             </ul>
         </div>
     </nav>

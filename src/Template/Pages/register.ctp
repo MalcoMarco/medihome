@@ -46,57 +46,75 @@
 			  	</div>
 					<!-- ***************************      ************-->
 		  		<div class="tab-pane fade show active" id="registro" role="tabpanel" aria-labelledby="registro-tab">
-					<form class="container">
+					<form class="container" method="post" action="/pacientes/addpaciente">
 					  	<div class="row">
+					  		<input name="_method" value="POST" type="hidden">
 						    <div class="col-md-6 mb-3">
 						      <label for="validationCustom01"><i class="fa fa-user-circle" aria-hidden="true"></i> Nombres</label>
-						      <input type="text" class="form-control" id="validationCustom01" placeholder="First name" value="Mark" required>
+						      <input type="text" class="form-control" id="validationCustom01" placeholder="Names" name="nombre" required>
 						    </div>
 						    <div class="col-md-6 mb-3">
-						      <label for="validationCustom02">Apellidos</label>
-						      <input type="text" class="form-control" id="validationCustom02" placeholder="Last name" value="Otto" required>
+						      <label for="validationCustom02">Apellido Paterno</label>
+						      <input type="text" class="form-control" id="validationCustom02" required name="apaterno">
+						    </div>
+						    <div class="col-md-6 mb-3">
+						      <label for="validationCustom03">Apellido Materno</label>
+						      <input type="text" class="form-control" id="validationCustom03"  required name="amaterno">
 						    </div>
 					  	</div>
 					  <div class="row">
 					    <div class="col-md-6 mb-3">
 						  <div class="form-group">
 						    <label for="exampleFormControlSelect1">Tipo de Documento</label>
-						    <select class="form-control" id="exampleFormControlSelect1">
-						      <option>DNI</option>
-						      <option>Libreta</option>
-						      <option>Pasaporte</option>
+						    <select class="form-control" id="exampleFormControlSelect1" name="tipodoc">
+						      <option value="DNI" >DNI</option>
+						      <option value="Libreta">Libreta</option>
+						      <option value="Pasaporte">Pasaporte</option>
 						    </select>
 						  </div>
 					    </div>
 					    <div class="col-md-6 mb-3">
 					      <label for="validationCustom04"># Documento</label>
-					      <input type="text" class="form-control" id="validationCustom04" required>
+					      <input type="text" class="form-control" id="validationCustom04" required name="numdoc">
+					    </div>
+					    <div class="col-md-6 mb-3">
+						  <div class="form-group">
+						    <label for="exampleFormControlSelect2">Genero</label>
+						    <select class="form-control" id="exampleFormControlSelect2" name="sexo">
+						      <option value="F" >Femenino</option>
+						      <option value="M" >Masculino</option>
+						    </select>
+						  </div>
+					    </div>
+					    <div class="col-md-6 mb-3">
+					      <label for="validationCustom05">Fecha Nacimiento</label>
+					      <input type="date" class="form-control" id="validationCustom05" required name="nacimiento">
+					    </div>
+					  </div>
+					  <div class="row">
+					    <div class="col-md-6 mb-3">
+					      <label for="Phone">Telefono</label>
+					      <input type="text" class="form-control" id="Phone" required name="telefono">
 					      <div class="invalid-feedback">
 					        Please provide a valid
 					      </div>
 					    </div>
 					    <div class="col-md-6 mb-3">
-					      <label for="validationCustom05">Fecha Nacimiento</label>
-					      <input type="date" class="form-control" id="validationCustom05" required>
-					      <div class="invalid-feedback">
-					        Please provide a valid zip.
-					      </div>
-					    </div>
+					      <label for="direccion">direccion</label>
+					      <input type="text" class="form-control" id="direccion" name="direccion">
+					    </div>					  	
 					  </div>
 					  <div class="row">
 					    <div class="col-md-6 mb-3">
 					      <label for="email">Email</label>
-					      <input type="email" class="form-control" id="email" required>
+					      <input type="email" class="form-control" id="email" required name="email">
 					      <div class="invalid-feedback">
 					        Please provide a valid
 					      </div>
 					    </div>
 					    <div class="col-md-6 mb-3">
 					      <label for="password">Password</label>
-					      <input type="password" class="form-control" id="password" required>
-					      <div class="invalid-feedback">
-					        Please provide a valid zip.
-					      </div>
+					      <input type="password" class="form-control" id="password" required name="password">
 					    </div>					  	
 					  </div>
 					  <div class="form-check">
@@ -106,7 +124,7 @@
 						    </label>
 						  </div>
 
-					  <button class="btn btn-primary" type="submit">Submit form</button>
+					  <button class="btn btn-primary" type="submit">ACEPTAR</button>
 					</form>
 			  	</div>
 			</div>				

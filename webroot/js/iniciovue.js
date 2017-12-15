@@ -4,12 +4,11 @@ new Vue({
 	created:function(){
 		this.path = window.location.pathname;
 		this.getKeeps();
-		this.IDsearchE = (window.location.search).substring(1);
-		if (this.IDsearchE=='') {
+		this.IDsearchE = this.getParameterByName('IDsearchE');
+		if (this.IDsearchE==' ') {
 			this.IDsearchE=0;
 		}
 		this.selectE=this.IDsearchE;
-		
 		if (this.path=='/pages/reservas') {
 			this.Buscar();
 		}	
@@ -32,6 +31,7 @@ new Vue({
 				apaterno: '',
 				email: '',
 				especialidad_id: 1,
+				especialidad: '',
 				id: 1,
 				nombre: '',
 				telefono: ''
@@ -39,7 +39,7 @@ new Vue({
 
 		IDsearchE:0,
 		selectE:0,
-		hoy:new Date().getDate()
+
 	},
 
 	methods:{
@@ -63,10 +63,8 @@ new Vue({
 			.then(respuesta=>{
 				//console.log(respuesta.data);
 				this.medics= respuesta.data.Medics;
-			});
-			alert('BUSCADO: '+ (parseInt(this.selectE)+1));
-			this.cargado();
-			
+				this.cargado();
+			});					
 		},
 
 		cargando(){
@@ -76,6 +74,14 @@ new Vue({
 		cargado(){
 			var $prog=$('#progressbar');
 			$prog.addClass("hide");
+		},
+
+		getParameterByName : function(name){
+		    name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+		    var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+		    var results = regex.exec(location.search);
+		    return results === null ? ' ' : decodeURIComponent(results[1].replace(/\+/g, ' '));
 		}
 	}
 });
+

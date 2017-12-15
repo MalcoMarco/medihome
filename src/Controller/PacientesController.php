@@ -68,6 +68,26 @@ class PacientesController extends AppController
         $this->set('_serialize', ['paciente']);
     }
 
+    public function addpaciente()
+    {
+        $this->autoRender = false;
+        $paciente = $this->Pacientes->newEntity();
+        if ($this->request->is('post')) {
+            $paciente = $this->Pacientes->patchEntity($paciente, $this->request->getData());
+            if ($this->Pacientes->save($paciente)) {
+                $this->Flash->success(__('The paciente has been saved.'));
+                    _addusers($this->request["data"]["numdoc"],$this->request["data"]["password"],$this->request["data"]["tipodoc"]);
+                //return $this->redirect('/pages/register');
+            }
+            //$this->Flash->error(__('The paciente could not be saved. Please, try again.'));
+        }
+
+    }
+
+    public function _addusers($username, $password,  $tipodoc){
+        $user = $this->Users->newEntity();
+
+    }
     /**
      * Edit method
      *

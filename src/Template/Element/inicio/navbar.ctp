@@ -25,9 +25,18 @@
       <li class="nav-item active">
         <a class="nav-link" v-bind:class="{'active-ok':isnav('/pages/reservas')}" href="/pages/reservas"><i class="fa fa-medkit" aria-hidden="true"></i> Reserva Tu Cita</a>
       </li>
-  
+        
+        <?php if (isset($current_user)): ?>
+          <li class="nav-item active">
+          <a class="nav-link " href="/users/logout"><i class="fa fa-close" aria-hidden="true"></i> Cerrar Sesion</a> </li>
+          <?php else: ?>
+            <li class="nav-item active">
+          <a class="nav-link " v-bind:class="{'active-ok':isnav('/pages/login')}" href="/pages/login"><i class="fa fa-user" aria-hidden="true"></i> Registrate</a> </li>
+        <?php endif ?>
+        
+        
         <li class="nav-item active">
-          <a class="nav-link " v-bind:class="{'active-ok':isnav('/pages/login')}" href="/pages/login"><i class="fa fa-user" aria-hidden="true"></i> iniciar</a>
-        </li>
+        <a class="nav-link"  href="/users/login"><i class="fa fa-h-square" aria-hidden="true"></i> Admin</a>
+      </li>
     </ul>
   </div> 

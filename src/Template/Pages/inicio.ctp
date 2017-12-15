@@ -1,6 +1,4 @@
-<?php
-$this->layout='App';
-?>
+<?php $this->layout='App';?>
 
 <main>
 <div class="container">
@@ -60,15 +58,13 @@ $this->layout='App';
     <p>
 	  	<a href="#" class="btn btn-outline-info" role="button" data-toggle="collapse" data-target="#specialidades" aria-expanded="false" aria-controls="specialidades" > Todas nuestras especialidades <i class="fa fa-sort-desc" aria-hidden="true"></i>  </a> 
 	</p>
-	<pre>
 
-	</pre>
 	<div class="collapse" id="specialidades">
 	  <div class="card card-body">
 	  		<div class="row justify-content-center">
 
 	      	<div class="col-sm-12 col-md-6 col-xl-3" v-for="(especialidad, index) in ListE">
-				<a  v-bind:href="'/pages/reservas?'+index" class="sin-r">
+				<a  v-bind:href="'/pages/reservas?IDsearchE='+index" class="sin-r">
 					<div class="card text-white bg-info mb-3">
 				  	<div class="card-header">{{especialidad.nombre}} </div>
 					</div>
