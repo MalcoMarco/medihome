@@ -33,6 +33,18 @@ bin/cake server -p 8765
 
 Then visit `http://localhost:8765` to see the welcome page.
 
+Renombrar el archivo config/app.default.php  por app.php y configura la conexion de BD 
+
+Ejecutar para crear la BD
+```bash
+bin/cake migrations migrate
+```
+
+Credenciales de Administrado:
+tidodoc: DNI
+username: malco
+password: 123
+
 ## Update
 
 Since this skeleton is a starting point for your application and various files
