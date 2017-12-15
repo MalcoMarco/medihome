@@ -40,10 +40,14 @@ Ejecutar para crear la BD
 bin/cake migrations migrate
 ```
 
-Credenciales de Administrado:
+Credenciales de Administrador:
+
 tidodoc: DNI
+
 username: malco
+
 password: 123
+
 
 ## Update
 
