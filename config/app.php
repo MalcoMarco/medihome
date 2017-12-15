@@ -64,7 +64,7 @@ return [
      *   You should treat it as extremely sensitive data.
      */
     'Security' => [
-        'salt' => env('SECURITY_SALT', '__SALT__'),
+        'salt' => env('SECURITY_SALT', '4919351c8076e2e238bd90194ba36118b7f5ac928db4df35eb02e198dc141eec'),
     ],
 
     /**
@@ -220,7 +220,7 @@ return [
     'Datasources' => [
         'default' => [
             'className' => 'Cake\Database\Connection',
-            'driver' => 'Cake\Database\Driver\Mysql',
+            'driver' => 'Cake\Database\Driver\Postgres',
             'persistent' => false,
             'host' => 'ec2-54-221-229-64.compute-1.amazonaws.com',
             /**
@@ -228,7 +228,7 @@ return [
              * MySQL on MAMP uses port 8889, MAMP users will want to uncomment
              * the following line and set the port accordingly
              */
-           // 'port' => '5432',//cake3pg
+            'port' => '5432',//cake3pg
             'username' => 'oyczymocqmgmin',
             'password' => '58518a7a6e26cced74a4d871982c01d9e463502f0f5443ed926174fca164fe32',
             'database' => 'ddlodnqa0rnm3c',
@@ -237,7 +237,6 @@ return [
             'flags' => [],
             'cacheMetadata' => true,
             'log' => false,
-
 
             /**
              * Set identifier quoting to true if you are using reserved words or
