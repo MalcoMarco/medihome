@@ -31,7 +31,7 @@
           <a class="nav-link " href="/users/logout"><i class="fa fa-close" aria-hidden="true"></i> Cerrar Sesion</a> </li>
           <?php else: ?>
             <li class="nav-item active">
-          <a class="nav-link " v-bind:class="{'active-ok':isnav('/pages/login')}" href="/pages/login"><i class="fa fa-user" aria-hidden="true"></i> Registrate</a> </li>
+          <a class="nav-link " v-bind:class="{'active-ok':isnav('/pages/register')}" href="/pages/register"><i class="fa fa-user" aria-hidden="true"></i> Registrate</a> </li>
         <?php endif ?>
         
         

@@ -14,7 +14,7 @@
 		</div>
       	<div class="col-sm-12 col-md-6 col-xl-3">
 			<div class="card text-white bg-info mb-3" >
-				<a href="#" class="sin-r"> 
+				<a href="/pages/reservas?IDsearchE=0" class="sin-r"> 
 				  <div class="card-header">Medicina General</div>
 				  <div class="card-body">
 				    <img src="/imagenes/especialidades/mg.jpg" class="img-fluid">
@@ -24,18 +24,18 @@
       	</div>
       	<div class="col-sm-12 col-md-6 col-xl-3">
 			<div class="card text-white bg-info mb-3" >
-			  <div class="card-header">Pediatría</div>
-				  	<a href="#" class="sin-r">
-					  <div class="card-body">
-					    <img src="/imagenes/especialidades/pediatria.jpg" class="img-fluid">
-					  </div>
+				  	<a href="/pages/reservas?IDsearchE=1" class="sin-r">
+				  		<div class="card-header">Pediatría</div>
+					  	<div class="card-body">
+					    	<img src="/imagenes/especialidades/pediatria.jpg" class="img-fluid">
+					  	</div>
 					</a>
 			</div>
       	</div>
       <div class="col-sm-12 col-md-6 col-xl-3">
 			<div class="card text-white bg-info mb-3">
-			  	<div class="card-header">Cirugía General</div>
-			  	<a href="#" class="sin-r">
+			  	<a href="#/pages/reservas?IDsearchE=2" class="sin-r">
+			  	<div class="card-header">Cirugía General</div>			  		
 				  	<div class="card-body">
 				    <img src="/imagenes/especialidades/cg2.jpg" class="img-fluid">
 				  </div>
@@ -45,9 +45,9 @@
       </div>
 
       <div class="col-sm-12 col-md-6 col-xl-3">
-			<div class="card text-white bg-info mb-3" >
-			  <div class="card-header">Ginecología Y Obstetricia</div>
-			  	<a href="#" class="sin-r">
+			<div class="card text-white bg-info mb-3" >			  
+			  	<a href="/pages/reservas?IDsearchE=4" class="sin-r">
+			  		<div class="card-header">Ginecología Y Obstetricia</div>
 				  	<div class="card-body">
 				    <img src="/imagenes/especialidades/ginec.jpg" class="img-fluid">
 				  </div>
@@ -97,7 +97,7 @@
 		</div>
 		<div class="col-sm-12 col-md-4 align-self-center">
 
-			<a href="#" class="">
+			<a href="/pages/reservas" class="">
 				<h3>Nuestros Especialistas</h3>
 				<p>Conoce a Nuestros Expertos De La Salud...</p>
 			</a>

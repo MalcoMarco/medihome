@@ -23,7 +23,7 @@ class UsersController extends AppController
             if ($user) {
                 $this->Auth->setUser($user);                
                 if (($this->Auth->user()["role"])=="Paciente") {
-                    return $this->redirect('/pages/reservas');
+                    return $this->redirect('/pages/reserva_dia?Mid='.$this->request["data"]["Mid"]);
                     //return "sesion iniciada";
                 }elseif (($this->Auth->user["role"])=="Admin") {
                     return $this->redirect($this->Auth->redirectUrl());

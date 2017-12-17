@@ -48,7 +48,7 @@ class MedicosController extends AppController
         $Medics = $this->paginate('medicos',$opciones);
         echo json_encode(compact('Medics'));
     }
-
+/*
     public function medicoid($id)
     {   //buscar medico de expecialidad x
         $this->paginate = array( 
@@ -65,7 +65,7 @@ class MedicosController extends AppController
         $Medic = $this->paginate('medicos',$opciones);
         echo json_encode(compact('Medic'));
     }
-
+*/
 
     public function view($id = null)
     {

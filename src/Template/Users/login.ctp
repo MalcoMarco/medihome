@@ -11,5 +11,9 @@
 		<?= $this->Form->button(__('Login')); ?>
 		<?= $this->Form->end() ?>
 	</div>
-		
+<pre>
+Tipodoc: DNI
+Username: malco
+Pass: 123
+</pre>	
 </div>

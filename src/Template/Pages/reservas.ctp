@@ -15,15 +15,15 @@
 					      	<label for="Medico"><i class="fa fa-user-circle" aria-hidden="true"></i> Medico </label>
 					      	<input type="text" class="form-control" id="Medico" placeholder="Nombre o Codigo de Medico">
 					    </div>
-					    <div class="col-md-5 mb-3">
-					      	<label for="sel"> Especialidad: {{selectE}}</label><br>
+					    <div class="col-md-3 mb-3">
+					      	<label for="sel"><i class="fa fa-id-card" aria-hidden="true"></i> Especialidad:</label><br>
 					      	<select class="custom-select" class="form-control" id="sel" v-model="selectE">
 					      		<option><---seleccione una opcion---></option>
 						  		<option  v-for="(especialidad, index) in ListE" v-bind:value="index" > {{especialidad.nombre}}</option>					  
 							</select>					    					    	
 					    </div>
 					    <div class="col-md-2 d-flex align-items-end mb-3">
-							<button v-on:click="Buscar()" class="btn btn-primary">BUSCAR</button>
+							<button v-on:click="Buscar()" class="btn btn-primary"><i class="fa fa-search" aria-hidden="true"></i> BUSCAR</button>
 					    </div>	
 				  	</div>
 				  
@@ -51,7 +51,7 @@
 			<p><b>Email: </b>{{medic.email}}</p>
 		</div>
 		<div class="col">		
-			<a v-bind:href="'/pages/reserva_dia?Mid='+medic.id" role="button" class="btn btn-outline-primary mt-3">Reservar cita</a>		
+			<a v-bind:href="'/pages/reserva_dia'" v-on:click="mimedico(index , medic.id)" role="button" class="btn btn-outline-primary mt-3"><i class="fa fa-check" aria-hidden="true"></i> Reservar cita</a>		
 		</div>
 		<hr>
 	</div>
