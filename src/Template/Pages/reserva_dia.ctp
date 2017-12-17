@@ -1,6 +1,5 @@
 <?php $this->layout='App';?>
 
-
 <link rel="stylesheet" type="text/css" href="/css/bootstrap-datepicker.min.css">
 <main>
 	<div class="jumbotron jumb0">
@@ -20,8 +19,7 @@
 		</div>
 	</div>
 </main>
-	<div class="container" id="horarios"> 
-
+	<div class="container" id="horarios">
 		<?php if (isset($current_user) and $current_user['role']=='Paciente'): ?>
 			<div class="row mt-3" >
 				<div class="col-3">
